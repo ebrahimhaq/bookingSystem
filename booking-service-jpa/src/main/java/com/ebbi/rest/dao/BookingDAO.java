@@ -1,9 +1,11 @@
 package com.ebbi.rest.dao;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 
 import com.ebbi.rest.model.Booking;
 
+@Repository
 public class BookingDAO {
 	
 	@Autowired

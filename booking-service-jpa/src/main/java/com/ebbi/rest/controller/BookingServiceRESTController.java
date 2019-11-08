@@ -1,5 +1,8 @@
 package com.ebbi.rest.controller;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -25,9 +28,12 @@ public class BookingServiceRESTController {
 	    private BookingDAO bookingDao;
 	     
 	    @GetMapping(path="/availableslots",  produces = "application/json")
-	    public AvailableSlots getAvailableSlots(@RequestParam("date") String date)
+	    public List<AvailableSlots> getAvailableSlots(@RequestParam("date") String date)
 	    {
-	        return availableSlotsDao.getAvailableSlots(date);
+	    	List<AvailableSlots> slots = new ArrayList<AvailableSlots>();
+	    	slots.add(availableSlotsDao.getAvailableSlots(date));
+	    	
+	        return slots;
 	    }
 	    
 	    @PostMapping(path="/createSlot",consumes = "application/json",  produces = "application/json")
